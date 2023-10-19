@@ -82,7 +82,7 @@ jobs:
   updatedep:
     name: Update The ExamplePlugin Dep JavaIM Version
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }} && ${{ github.repository == 'JavaIM/JavaIM' }}
+    if: ${{ github.event_name == 'push' }} && ${{ github.repository.name == 'JavaIM/JavaIM' }}
     needs: analyze
     
     steps:
