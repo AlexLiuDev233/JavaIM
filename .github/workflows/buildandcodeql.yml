@@ -87,3 +87,4 @@ jobs:
     - name: Tips Information
       run: |
         echo ${{ github.repository }}
+        echo ${{ github.context.eventName }}
