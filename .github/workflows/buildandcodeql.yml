@@ -91,9 +91,36 @@ jobs:
       run: |
         echo ${{ github.repository }}
         echo ${{ github.event_name }}
-        
+
+    - name: Pre Checkout repository
+      run: mkdir ExamplePlugin
+      
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
         repository: "AlexLiuDev233/JavaIMExamplePlugin"
         token: ${{ secrets.ExamplePluginAccessToken }}
+        path: ./ExamplePlugin
+
+    - name: Download Artifact Name
+      uses: actions/download-artifact@v2.1.1
+      with:
+        # Artifact name
+        name: "JavaIM"
+        
+    - name: Unzip Artifact And Move File
+      run: |
+        ls
+        unzip JavaIM.zip
+        ls
+        cd JavaIM
+        ls
+        mv JavaIM-1.0-SNAPSHOT.jar JavaIM.jar
+        mv JavaIM.jar ../ExamplePlugin/dep
+        cd ..
+    - name: Commit And Push
+      run: |
+        cd ExamplePlugin
+        git commit -m "Github Action Auto Push"
+        git push https://github.com/AlexLiuDev233/JavaIMExamplePlugin
+    
