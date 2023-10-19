@@ -19,7 +19,6 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: '32 19 * * 6'
-  workflow_dispatch:
 
 jobs:
   analyze:
@@ -80,10 +79,12 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
-  Test:
-    name: test
+  updatedep:
+    name: Update The ExamplePlugin Dep JavaIM Version
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
+    if: |
+      ${{ github.event_name == 'push' }}
+      ${{ github.repository == 'JavaIM/JavaIM' }}
     needs: analyze
     
     steps:
@@ -93,7 +94,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        repository: "AlexLiuDev233/JavaIMExamplePlugin"
+        repository: "JavaIM/ExamplePlugin"
         token: ${{ secrets.ExamplePluginAccessToken }}
         path: ./ExamplePlugin
 
@@ -114,6 +115,6 @@ jobs:
         git config --global user.email "git@github.com"
         git config --global user.name "Github Action"
         git add .
-        git commit -m "Github Action Auto Push"
-        git push https://github.com/AlexLiuDev233/JavaIMExamplePlugin
+        git commit -m "Github Action Auto Update"
+        git push https://github.com/JavaIM/ExamplePlugin
     
