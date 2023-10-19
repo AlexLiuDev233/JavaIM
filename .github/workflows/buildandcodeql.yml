@@ -82,6 +82,7 @@ jobs:
   Test:
     name: test
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
     
     steps:
     - name: Tips Information
