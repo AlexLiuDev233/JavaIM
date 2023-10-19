@@ -111,9 +111,9 @@ jobs:
     - name: Commit And Push
       run: |
         cd ExamplePlugin
-        ls
         git config --global user.email "git@github.com"
         git config --global user.name "Github Action"
+        git add .
         git commit -m "Github Action Auto Push"
         git push https://github.com/AlexLiuDev233/JavaIMExamplePlugin
     
