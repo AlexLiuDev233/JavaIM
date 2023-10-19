@@ -103,16 +103,11 @@ jobs:
         # Artifact name
         name: "JavaIM"
         
-    - name: Unzip Artifact And Move File
+    - name: Move Artifact
       run: |
         ls
-        unzip JavaIM.zip
-        ls
-        cd JavaIM
-        ls
         mv JavaIM-1.0-SNAPSHOT.jar JavaIM.jar
-        mv JavaIM.jar ../ExamplePlugin/dep
-        cd ..
+        mv JavaIM.jar ./ExamplePlugin/dep
     - name: Commit And Push
       run: |
         cd ExamplePlugin
