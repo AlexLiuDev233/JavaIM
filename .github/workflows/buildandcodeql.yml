@@ -88,4 +88,9 @@ jobs:
     - name: Tips Information
       run: |
         echo ${{ github.repository }}
-        echo ${{ github.context.eventName }}
+        echo ${{ github.event_name }}
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        repository: "JavaIM/ExamplePlugin"
+        token: ${{ ExamplePlugin.AccessToken }}
