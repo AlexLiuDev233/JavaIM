@@ -95,5 +95,5 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        repository: "JavaIM/ExamplePlugin"
+        repository: "AlexLiuDev233/JavaIMExamplePlugin"
         token: ${{ secrets.ExamplePluginAccessToken }}
