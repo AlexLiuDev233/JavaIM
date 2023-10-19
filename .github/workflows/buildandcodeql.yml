@@ -84,14 +84,9 @@ jobs:
     name: test
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
+    needs: analyze
     
     steps:
-    
-    - name: Tips Information
-      run: |
-        echo ${{ github.repository }}
-        echo ${{ github.event_name }}
-
     - name: Pre Checkout repository
       run: mkdir ExamplePlugin
       
