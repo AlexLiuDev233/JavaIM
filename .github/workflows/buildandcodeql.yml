@@ -79,6 +79,11 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
-      
-          
-
+  Test:
+    name: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Tips Information
+      run: |
+        echo ${{ github.repository }}
